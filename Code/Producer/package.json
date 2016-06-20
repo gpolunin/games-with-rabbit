@@ -1,0 +1,15 @@
+{
+  "name": "rabbitmq-prototype",
+  "version": "0.0.1",
+  "description": "proto project",
+  "main": "producer.js",
+  "dependencies": {
+    "amqplib": "^0.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "George",
+  "license": "ISC"
+}
