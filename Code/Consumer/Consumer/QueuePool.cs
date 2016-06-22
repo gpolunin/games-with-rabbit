@@ -22,6 +22,11 @@ namespace Consumer
 
 		public void Init()
 		{
+			if (_isInitialized)
+			{
+				return;
+			}
+
 			var connectionFactory = new ConnectionFactory() { HostName = "192.168.99.100" };
 			_connection = connectionFactory.CreateConnection();
 

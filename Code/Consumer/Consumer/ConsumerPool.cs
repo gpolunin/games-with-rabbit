@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Consumer
 {
@@ -21,14 +18,24 @@ namespace Consumer
 
 		public void Dispose()
 		{
+			_queueConsumers.ForEach(c => c.Dispose());
+			_queueConsumers.Clear();
 			_isInitialized = false;
 		}
 
 		public void Init()
 		{
+			if (_isInitialized)
+			{
+				return;
+			}
+
+			_queuePool.Init();
 			for (var i = 0; i < _countOfConsumers; i++)
 			{
-				_queueConsumers.Add(new QueueConsumer(_queuePool));
+				var consumer = new QueueConsumer(_queuePool);
+				consumer.Init();
+				_queueConsumers.Add(consumer);
 			}
 
 			_isInitialized = true;
