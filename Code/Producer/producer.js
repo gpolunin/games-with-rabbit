@@ -24,7 +24,7 @@ function processQuit() {
 function processEnqueue({count = 1}) {
     for (var i = 0; i < count; i++)
     {
-        var message = `Messsage #${messageIncrement++}`
+        var message = `Messsage #${messageIncrement++}`;
         channel.sendToQueue(q, new Buffer(message));
         console.log(`${message} sent to ${q}.`);
     }
